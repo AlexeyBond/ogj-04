@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://colxo3w2vgokq"]
+[gd_scene load_steps=6 format=3 uid="uid://colxo3w2vgokq"]
 
 [ext_resource type="PackedScene" uid="uid://4o12ciluovej" path="res://plant/plant.tscn" id="1_386i8"]
+[ext_resource type="PackedScene" uid="uid://kj0ud6dmcmx5" path="res://plant/plant_environment.tscn" id="1_ybi0e"]
 [ext_resource type="Resource" uid="uid://ci7gtafej1spu" path="res://plant/test_dna_1.tres" id="2_h2s33"]
+[ext_resource type="PackedScene" uid="uid://dljegupf1oijx" path="res://segment/segment.tscn" id="4_ojdhl"]
 
 [sub_resource type="GDScript" id="GDScript_h2s33"]
 script/source = "extends Node3D
@@ -12,30 +14,17 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(\"ui_accept\"):
 		$Plant.grow_all()
-
-func _process(delta: float) -> void:
-	var a = Input.get_axis(\"ui_left\", \"ui_right\")
-	$cameraContainer.rotate(Vector3.UP, a * delta)
+		#var sc := PackedScene.new()
+		#sc.pack($Plant)
+		#ResourceSaver.save(sc, \"res://test_plant.tscn\")
 "
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2s33"]
-
-[sub_resource type="Sky" id="Sky_ybi0e"]
-sky_material = SubResource("ProceduralSkyMaterial_h2s33")
-
-[sub_resource type="Environment" id="Environment_ojdhl"]
-background_mode = 2
-sky = SubResource("Sky_ybi0e")
 
 [node name="PlantTest" type="Node3D"]
 script = SubResource("GDScript_h2s33")
 
+[node name="PlantEnvironment" parent="." instance=ExtResource("1_ybi0e")]
+
 [node name="Plant" parent="." instance=ExtResource("1_386i8")]
 dna = ExtResource("2_h2s33")
-segments_limit = 2000
-
-[node name="cameraContainer" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="cameraContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01199, 7.99783)
-environment = SubResource("Environment_ojdhl")
+segments_limit = 500
+segment_scene = ExtResource("4_ojdhl")

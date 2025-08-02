@@ -9,6 +9,8 @@
 material_override = ExtResource("1_wbu6i")
 mesh = SubResource("ArrayMesh_58bxh")
 script = ExtResource("1_58bxh")
+section_resolution = 4
+sections = 64
 color_start = null
 color_end = null
 color_main = null

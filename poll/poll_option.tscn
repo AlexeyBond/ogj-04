@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3f6yov6gw37a"]
+
+[ext_resource type="PackedScene" uid="uid://bwfmajbuhdk0f" path="res://poll/plant_view.tscn" id="1_gogkg"]
+[ext_resource type="Script" uid="uid://clbaspmqxwj73" path="res://poll/poll_option.gd" id="1_tf1fn"]
+
+[sub_resource type="World3D" id="World3D_tf1fn"]
+
+[node name="PollOption" type="VBoxContainer"]
+anchors_preset = -1
+anchor_right = 0.046
+anchor_bottom = 0.07
+offset_right = -52.992
+offset_bottom = -45.36
+size_flags_horizontal = 3
+script = ExtResource("1_tf1fn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 16.7
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 20.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_tf1fn")
+handle_input_locally = false
+size = Vector2i(136, 2)
+render_target_update_mode = 4
+
+[node name="PlantPreview" parent="MarginContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_gogkg")]
+unique_name_in_owner = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="MarginContainer2"]
+layout_mode = 2
+text = "Это красивее"
+
+[connection signal="done" from="MarginContainer/SubViewportContainer/SubViewport/PlantPreview" to="." method="_on_plant_preview_done"]
+[connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]

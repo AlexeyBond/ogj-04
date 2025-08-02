@@ -100,10 +100,8 @@ func _update_mesh():
 
 func _update_children_container():
 	children_container.transform = Transform3D().translated(Vector3(0, length, 0))
-	
 
-func _ready() -> void:
-	mesh = am
+func _ensure_children_container():
 	if children_container == null:
 		children_container = Node3D.new()
 		children_container.name = "children_container"
@@ -112,17 +110,21 @@ func _ready() -> void:
 			children_container.reparent(self)
 		else:
 			add_child(children_container, true)
+
+func _ready() -> void:
+	mesh = am
 	_update_children_container()
-	_update_mesh()
 
 func update_all():
 	_update_children_container()
 	_update_mesh()
 
 func add_child_segment(segment: PlantSegment):
+	_ensure_children_container()
 	children_container.add_child(segment)
 
 func get_child_segments() -> Array[PlantSegment]:
+	_ensure_children_container()
 	var res: Array[PlantSegment] = []
 
 	for c in children_container.get_children():

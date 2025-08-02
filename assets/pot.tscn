@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://ug0byqcgqkwp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cd0mxremhdlie" path="res://assets/pot.obj" id="1_42cpt"]
+
+[sub_resource type="Gradient" id="Gradient_114nj"]
+colors = PackedColorArray(0.74558, 0.74558, 0.74558, 1, 1, 0.851418, 0.780075, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jj0gx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jw80i"]
+seamless = true
+color_ramp = SubResource("Gradient_114nj")
+noise = SubResource("FastNoiseLite_jj0gx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_abpyw"]
+frequency = 0.0177
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kbldt"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_abpyw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbnha"]
+albedo_color = Color(0.286197, 0.101627, 0.00146194, 1)
+albedo_texture = SubResource("NoiseTexture2D_jw80i")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_kbldt")
+uv1_triplanar = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vpdhs"]
+seed = 1
+frequency = 0.0222
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qq65b"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_vpdhs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73qua"]
+albedo_color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+metallic = 0.24
+metallic_specular = 0.62
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_qq65b")
+clearcoat = 0.42
+clearcoat_roughness = 0.05
+refraction_scale = -0.06
+grow_amount = 0.36
+
+[node name="Pot" type="MeshInstance3D"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = ExtResource("1_42cpt")
+surface_material_override/0 = SubResource("StandardMaterial3D_nbnha")
+surface_material_override/1 = SubResource("StandardMaterial3D_73qua")

@@ -1,6 +1,8 @@
 @tool
 extends Node3D
 
+class_name Plant
+
 @export var dna: DNA
 
 @export var segments_limit: int = 512
@@ -22,33 +24,40 @@ func _sum_quarter_bytes(v: int) -> int:
 	return (v & 0x3) + ((v >> 2) & 0x3)
 
 func _enqueue_next_task(row: int, segment: PlantSegment):
-	var weights: Array[int] = []
-	var total_weights: int = 0
-	for i in range(_DNA_NEXT_START, DNA.ROW_SIZE):
-		var w = dna.read_4b(row, i, 0)
-		total_weights += w
-		weights.append(w)
-
-	if total_weights == 0:
-		return
-	
-	var rnd: int = randi_range(0, total_weights)
-	var acc: int = 0
-	
 	for i in range(_DNA_NEXT_START, DNA.ROW_SIZE):
 		var w := dna.read_4b(row, i, 0)
-		acc += w
-		if w > 0 and acc >= rnd:
+		if randi() % 32 <= w:
 			var off = _sum_quarter_bytes(dna.read_4b(row, i, 1))
 			var next_row = (row + off) % DNA.N_ROWS
 			_tasks.push_back(GrowthTask.new(segment, next_row))
-			break
+			return
+	#var weights: Array[int] = []
+	#var total_weights: int = 0
+	#for i in range(_DNA_NEXT_START, DNA.ROW_SIZE):
+		#var w = dna.read_4b(row, i, 0)
+		#total_weights += w
+		#weights.append(w)
+#
+	#if total_weights == 0:
+		#return
+	#
+	#var rnd: int = randi_range(0, total_weights)
+	#var acc: int = 0
+	#
+	#for i in range(_DNA_NEXT_START, DNA.ROW_SIZE):
+		#var w := dna.read_4b(row, i, 0)
+		#acc += w
+		#if w > 0 and acc >= rnd:
+			#var off = _sum_quarter_bytes(dna.read_4b(row, i, 1))
+			#var next_row = (row + off) % DNA.N_ROWS
+			#_tasks.push_back(GrowthTask.new(segment, next_row))
+			#break
 
 
 const _SPREAD_ANGLE_BASE := PI * 0.3
 
 
-@onready var segment_scene: PackedScene = load("res://segment/segment.tscn")
+@export var segment_scene: PackedScene
 
 
 func _grow_task(task: GrowthTask):
@@ -95,8 +104,8 @@ func _grow_task(task: GrowthTask):
 
 		var col = Color.from_hsv(
 			float(base_hue) / 16.0 + randf_range(-hue_var, hue_var) / 16.0 / 16.0,
-			0.5,
-			0.5,
+			1.0,
+			1.0,
 		)
 		segment.color_main = col
 		segment.color_start = col
@@ -138,7 +147,7 @@ func _normalize_segment_visuals(segment: PlantSegment) -> float:
 	var min_area = _get_segment_min_area(segment)
 	var children_total_area: float = min_area
 	var children_min_area: float = min_area
-	var color_acc := Color.BLACK
+	var color_acc := segment.color_main
 	var n_children = 0
 	
 	for child in segment.get_child_segments():
@@ -150,13 +159,13 @@ func _normalize_segment_visuals(segment: PlantSegment) -> float:
 
 	var final_area = lerpf(children_total_area, children_min_area, 0.5)
 
-	color_acc /= float(n_children)
+	color_acc /= float(n_children + 1)
 	segment.color_end = color_acc
 
 	var er = _area_to_radius(final_area)
 	segment.radius_end = er
 	segment.radius_start = er
-	
+
 	for child in segment.get_child_segments():
 		child.radius_start = er
 		child.color_start = color_acc

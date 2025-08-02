@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwfmajbuhdk0f"]
+
+[ext_resource type="Script" uid="uid://ym2pebryfut0" path="res://poll/plant_view.gd" id="1_44x84"]
+[ext_resource type="PackedScene" uid="uid://kj0ud6dmcmx5" path="res://plant/plant_environment.tscn" id="2_j3vl0"]
+[ext_resource type="PackedScene" uid="uid://4o12ciluovej" path="res://plant/plant.tscn" id="3_rdei5"]
+
+[node name="PlantPreview" type="Node3D"]
+script = ExtResource("1_44x84")
+plant_scene = ExtResource("3_rdei5")
+
+[node name="PlantEnvironment" parent="." instance=ExtResource("2_j3vl0")]
+
+[node name="Plant" parent="." instance=ExtResource("3_rdei5")]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://blwuydaqjnjh4"]
+
+[ext_resource type="Script" uid="uid://cfk7pxxatdsay" path="res://poll/poll.gd" id="1_0tld0"]
+[ext_resource type="PackedScene" uid="uid://c3f6yov6gw37a" path="res://poll/poll_option.tscn" id="1_m5cmn"]
+
+[node name="Poll" type="CanvasLayer"]
+script = ExtResource("1_0tld0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="option1" parent="HBoxContainer" instance=ExtResource("1_m5cmn")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="option2" parent="HBoxContainer" instance=ExtResource("1_m5cmn")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="loading_overlay" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="loading_overlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.169245, 0.169245, 0.169245, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="loading_overlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="loading_overlay/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Выращиваем растения..."
+
+[connection signal="done" from="HBoxContainer/option1" to="." method="_on_something_done"]
+[connection signal="selected" from="HBoxContainer/option1" to="." method="_on_option_1_selected"]
+[connection signal="done" from="HBoxContainer/option2" to="." method="_on_something_done"]
+[connection signal="selected" from="HBoxContainer/option2" to="." method="_on_option_2_selected"]

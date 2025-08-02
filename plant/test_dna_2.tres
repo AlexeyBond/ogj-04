@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DNA" load_steps=2 format=3 uid="uid://b7jc2beu1uwwe"]
+
+[ext_resource type="Script" uid="uid://coismxuo0sxp7" path="res://plant/dna.gd" id="1_aoihe"]
+
+[resource]
+script = ExtResource("1_aoihe")
+data = PackedByteArray(23, 188, 164, 138, 252, 132, 12, 167, 207, 75, 138, 239, 33, 58, 212, 198, 0, 150, 117, 175, 26, 87, 60, 81, 33, 109, 158, 57, 168, 142, 50, 3, 3, 68, 31, 134, 143, 151, 131, 125, 249, 88, 43, 11, 12, 64, 231, 150, 227, 137, 178, 129, 246, 96, 168, 169, 118, 205, 12, 135, 233, 9, 199, 105)
+metadata/_custom_type_script = "uid://coismxuo0sxp7"
