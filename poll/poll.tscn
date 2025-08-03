@@ -22,7 +22,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="loading_overlay" type="CanvasLayer" parent="."]
-visible = false
+layer = 2
 
 [node name="ColorRect" type="ColorRect" parent="loading_overlay"]
 anchors_preset = 15

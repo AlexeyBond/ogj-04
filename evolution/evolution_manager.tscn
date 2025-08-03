@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://diakg874xwwls"]
 
 [ext_resource type="Script" uid="uid://gq8dglxn68jc" path="res://evolution/evolution_manager.gd" id="1_lmflt"]
-[ext_resource type="Resource" uid="uid://bu5erux6yg2ul" path="res://checkpoints/_latest.tres" id="2_sjuq8"]
+[ext_resource type="Resource" uid="uid://dn5tc2j86wukg" path="res://checkpoints/_latest.tres" id="2_sjuq8"]
 
 [node name="EvolutionManager" type="Node"]
 script = ExtResource("1_lmflt")

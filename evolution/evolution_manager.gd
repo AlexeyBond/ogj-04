@@ -17,8 +17,6 @@ const BASE_RATING := 1000.0
 
 @export var min_polls_per_species: int = 2
 
-var cp_index = 0
-
 var species: Array[EvolutionSpecies]
 
 func _randomize():
@@ -30,19 +28,34 @@ func _randomize():
 		s.dna = dna
 		s.polls = 0
 		s.rating = BASE_RATING
+		s.parent_id1 = "<none>"
+		s.parent_id2 = "<none>"
+		s.id = uuid.v4()
 		species.append(s)
 
 func _restore_checkpoint(cp: EvolutionCheckpoint):
 	species = cp.species.duplicate(true)
+	for s in species:
+		if s.id == null or s.id == "":
+			s.id = uuid.v4()
 
-func _save_checkpoint():
-	var ts = Time.get_datetime_string_from_system().replace(':', '-')
-	var url = "res://checkpoints/cp-"  + ts + "-" + str(cp_index) + ".tres"
-	cp_index += 1
+func _make_checkpoint() -> EvolutionCheckpoint:
 	var cp = EvolutionCheckpoint.new()
 	cp.species = species.duplicate(true)
+	return cp
+
+var cp_index = 0
+
+func _store_checkpoint(cp: EvolutionCheckpoint):
+	var ts = Time.get_datetime_string_from_system().replace(':', '-')
+	var url = "user://cp-"  + ts + "-" + str(cp_index) + ".tres"
+	cp_index += 1
 	ResourceSaver.save(cp, url)
-	ResourceSaver.save(cp, "res://checkpoints/_latest.tres")
+	ResourceSaver.save(cp, "user://cp-latest.tres")
+
+func _save_checkpoint():
+	var cp = _make_checkpoint()
+	_store_checkpoint.call_deferred(cp)
 
 func _select_fittest():
 	species.sort_custom(func(a, b): return a.rating > b.rating)
@@ -64,7 +77,12 @@ func _make_new_species():
 		s.dna = dna
 		s.rating = lerpf(lerpf(parent1.rating, parent2.rating, 0.5), BASE_RATING, 0.95)
 		s.polls = 0
+		s.parent_id1 = parent1.id
+		s.parent_id2 = parent2.id
+		s.id = uuid.v4()
 		species.append(s)
+	for j in initial:
+		species[j].rating = lerp(species[j].rating, BASE_RATING, 0.9)
 	print("Made new ", species.size() - initial, " species")
 
 func prepare_competition():
@@ -101,7 +119,13 @@ func vote_for_competitor(winner: int):
 		_save_checkpoint()
 
 func _ready() -> void:
-	if checkpoint == null:
-		_randomize()
+	print("Checkpoints will be in ", OS.get_user_data_dir())
+	var cp = ResourceLoader.load("user://cp-latest.tres")
+	if cp == null:
+		push_warning("No user checkpoint")
+		if checkpoint == null:
+			_randomize()
+		else:
+			_restore_checkpoint(checkpoint)
 	else:
-		_restore_checkpoint(checkpoint)
+		_restore_checkpoint(cp)
