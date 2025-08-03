@@ -20,6 +20,8 @@ var length_overhead_end: float = 0.1
 
 @export var children_container: Node3D
 
+@export var mat: StandardMaterial3D = load("res://segment/segment.material")
+
 func _get_section_point_radius(a: float, s: float) -> float:
 	var sl: float = min(
 		1.0,
@@ -95,6 +97,7 @@ func _update_mesh():
 	_generate(st)
 	am.clear_surfaces()
 	st.commit(am)
+	am.surface_set_material(0, mat)
 
 @export_tool_button("Update mesh", "Callable") var update_mesh = _update_mesh
 

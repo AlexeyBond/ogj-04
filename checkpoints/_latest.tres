@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="EvolutionCheckpoint" load_steps=24 format=3 uid="uid://dn5tc2j86wukg"]
+
+[ext_resource type="Script" uid="uid://dubh674f4rti1" path="res://evolution/checkpoint.gd" id="1_ohwgj"]
+[ext_resource type="Script" uid="uid://byot1p1oh4fcq" path="res://evolution/species.gd" id="2_qbf4j"]
+[ext_resource type="Script" uid="uid://coismxuo0sxp7" path="res://plant/dna.gd" id="3_o4njf"]
+
+[sub_resource type="Resource" id="Resource_w7piq"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 59, 234, 29, 40, 94, 83, 91, 128, 95, 21, 236, 16, 39, 181, 81, 20, 144, 162, 207, 208, 110, 101, 44, 146, 26, 47, 245, 132, 153, 117, 242, 65, 126, 159, 24, 97, 226, 199, 241, 245, 89, 30, 254, 142, 212, 0, 63, 221, 246, 45, 113, 2, 149, 184, 236, 96, 246, 82, 243, 106, 170, 225, 35)
+
+[sub_resource type="Resource" id="Resource_nuvh0"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_w7piq")
+rating = 1070.95
+polls = 0
+
+[sub_resource type="Resource" id="Resource_macgl"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 59, 122, 63, 32, 92, 83, 27, 130, 15, 29, 228, 144, 39, 21, 113, 20, 184, 34, 207, 80, 110, 241, 62, 146, 154, 47, 245, 132, 153, 113, 246, 65, 126, 159, 24, 99, 226, 143, 145, 245, 89, 30, 254, 6, 213, 18, 61, 221, 134, 57, 99, 42, 149, 184, 237, 96, 246, 242, 251, 106, 170, 128, 35)
+
+[sub_resource type="Resource" id="Resource_nonb2"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_macgl")
+rating = 1068.77
+polls = 0
+
+[sub_resource type="Resource" id="Resource_x5cfp"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 59, 106, 47, 176, 92, 35, 27, 130, 94, 29, 228, 144, 39, 181, 33, 20, 184, 162, 239, 80, 110, 37, 36, 146, 154, 47, 245, 38, 137, 117, 242, 64, 58, 223, 88, 225, 162, 143, 241, 241, 85, 30, 254, 158, 157, 24, 103, 221, 134, 41, 97, 42, 157, 184, 108, 96, 166, 22, 251, 106, 170, 129, 43)
+
+[sub_resource type="Resource" id="Resource_odj7o"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_x5cfp")
+rating = 1068.14
+polls = 0
+
+[sub_resource type="Resource" id="Resource_f76dy"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 57, 234, 93, 8, 94, 83, 91, 130, 94, 29, 228, 144, 39, 181, 33, 20, 208, 162, 207, 208, 110, 101, 44, 16, 26, 47, 253, 132, 25, 117, 226, 64, 58, 223, 88, 97, 162, 143, 241, 113, 85, 30, 254, 158, 159, 24, 103, 221, 246, 45, 113, 3, 133, 184, 236, 96, 166, 23, 251, 106, 170, 129, 59)
+
+[sub_resource type="Resource" id="Resource_ty0pf"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_f76dy")
+rating = 1044.32
+polls = 0
+
+[sub_resource type="Resource" id="Resource_u82oi"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 59, 122, 63, 32, 92, 83, 27, 144, 95, 21, 236, 16, 39, 181, 81, 20, 144, 162, 207, 208, 236, 100, 44, 146, 154, 47, 245, 132, 153, 113, 246, 65, 126, 31, 24, 99, 226, 143, 241, 245, 89, 30, 254, 206, 208, 0, 63, 221, 134, 57, 99, 42, 149, 184, 237, 96, 246, 82, 243, 106, 168, 227, 35)
+
+[sub_resource type="Resource" id="Resource_sh3qg"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_u82oi")
+rating = 1013.97
+polls = 0
+
+[sub_resource type="Resource" id="Resource_36wor"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 59, 234, 29, 40, 94, 83, 91, 132, 95, 21, 236, 16, 55, 165, 81, 20, 144, 226, 207, 80, 110, 229, 44, 146, 26, 47, 245, 132, 185, 117, 242, 65, 126, 159, 24, 97, 226, 199, 209, 229, 89, 30, 222, 142, 212, 16, 31, 223, 246, 45, 113, 2, 213, 184, 236, 96, 246, 82, 243, 106, 170, 225, 35)
+
+[sub_resource type="Resource" id="Resource_wofem"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_36wor")
+rating = 1014.19
+polls = 0
+
+[sub_resource type="Resource" id="Resource_bance"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 51, 234, 13, 40, 94, 83, 27, 128, 95, 21, 236, 16, 39, 181, 81, 20, 178, 162, 207, 208, 110, 101, 44, 146, 24, 47, 213, 132, 153, 119, 178, 65, 118, 159, 56, 96, 226, 199, 241, 245, 89, 31, 252, 142, 212, 0, 63, 157, 246, 45, 113, 2, 145, 184, 204, 104, 246, 82, 243, 110, 170, 225, 35)
+
+[sub_resource type="Resource" id="Resource_36ias"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_bance")
+rating = 1014.19
+polls = 0
+
+[sub_resource type="Resource" id="Resource_1jx22"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(230, 57, 234, 29, 40, 94, 83, 27, 128, 127, 21, 236, 16, 39, 52, 81, 20, 144, 162, 207, 208, 110, 97, 44, 146, 26, 47, 245, 132, 153, 117, 242, 65, 126, 159, 24, 97, 226, 199, 241, 245, 73, 30, 254, 142, 212, 0, 59, 221, 246, 45, 112, 2, 149, 184, 238, 96, 246, 82, 243, 110, 170, 225, 35)
+
+[sub_resource type="Resource" id="Resource_gqwm3"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_1jx22")
+rating = 1014.19
+polls = 0
+
+[sub_resource type="Resource" id="Resource_o448u"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(246, 59, 120, 63, 32, 92, 83, 27, 128, 127, 21, 238, 16, 39, 181, 81, 20, 144, 179, 207, 208, 110, 101, 173, 146, 26, 47, 245, 132, 153, 117, 242, 81, 62, 159, 24, 99, 226, 143, 145, 245, 89, 30, 254, 142, 220, 0, 23, 213, 134, 57, 99, 42, 183, 184, 237, 112, 246, 18, 243, 106, 170, 225, 35)
+
+[sub_resource type="Resource" id="Resource_2vljv"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_o448u")
+rating = 1013.97
+polls = 0
+
+[sub_resource type="Resource" id="Resource_pi361"]
+script = ExtResource("3_o4njf")
+data = PackedByteArray(214, 59, 234, 93, 40, 94, 83, 91, 128, 95, 53, 236, 16, 39, 53, 81, 20, 148, 162, 207, 208, 110, 101, 44, 146, 26, 47, 245, 132, 153, 119, 242, 65, 126, 158, 24, 101, 226, 199, 241, 245, 89, 30, 254, 142, 212, 0, 63, 221, 246, 45, 113, 34, 149, 184, 108, 96, 166, 22, 251, 106, 170, 129, 43)
+
+[sub_resource type="Resource" id="Resource_5lfs5"]
+script = ExtResource("2_qbf4j")
+dna = SubResource("Resource_pi361")
+rating = 1013.91
+polls = 0
+
+[resource]
+script = ExtResource("1_ohwgj")
+species = Array[ExtResource("2_qbf4j")]([SubResource("Resource_nuvh0"), SubResource("Resource_nonb2"), SubResource("Resource_odj7o"), SubResource("Resource_ty0pf"), SubResource("Resource_sh3qg"), SubResource("Resource_wofem"), SubResource("Resource_36ias"), SubResource("Resource_gqwm3"), SubResource("Resource_2vljv"), SubResource("Resource_5lfs5")])

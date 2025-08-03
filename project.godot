@@ -11,11 +11,14 @@ config_version=5
 [application]
 
 config/name="ogj-02"
-run/main_scene="uid://colxo3w2vgokq"
+run/main_scene="uid://blwuydaqjnjh4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EvolutionManager="*res://evolution/evolution_manager.tscn"
+
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"

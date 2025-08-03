@@ -32,7 +32,7 @@ stretch = true
 own_world_3d = true
 world_3d = SubResource("World3D_tf1fn")
 handle_input_locally = false
-size = Vector2i(136, 2)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="PlantPreview" parent="MarginContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_gogkg")]
@@ -48,7 +48,10 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Button" type="Button" parent="MarginContainer2"]
 layout_mode = 2
-text = "Это красивее"
+text = "
+Это красивее
+
+"
 
 [connection signal="done" from="MarginContainer/SubViewportContainer/SubViewport/PlantPreview" to="." method="_on_plant_preview_done"]
 [connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]
